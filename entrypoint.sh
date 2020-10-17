@@ -29,6 +29,6 @@ else
     apple_optimized_output="$you_get_output"
 fi
 
-echo $bili_cookie
+download_link=$(transfer wet "$apple_optimized_output" 2>&1 | grep "Download Link: ")
 
-echo "::set-output name=transfer_urls::$apple_optimized_output"
+echo "::set-output name=transfer_urls::$download_link"
