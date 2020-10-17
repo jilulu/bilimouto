@@ -16,5 +16,6 @@ RUN apk add --no-cache --update libgcc libstdc++ ca-certificates libcrypto1.1 li
 # copy ffmpeg libraries from ffmpeg base 
 COPY --from=ffmpeg-base /usr/local /usr/local
 ENV LD_LIBRARY_PATH=/usr/local/lib:/usr/local/lib64
-
+# run script
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
