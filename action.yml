@@ -1,0 +1,16 @@
+# action.yml
+name: 'bili-fetcher'
+description: 'Download a video from Bilibili and forward it to cloud storage'
+inputs:
+  bili_video_url:  # id of input
+    description: 'URL of the Bilibili video to download'
+    required: true
+    default: 'https://www.bilibili.com/bangumi/play/ep307247' # the real bilibili
+outputs:
+  transfer_urls: # id of output
+    description: 'A list of transfer service URLs'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.bili_video_url }}
