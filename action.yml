@@ -2,10 +2,18 @@
 name: 'bili-fetcher'
 description: 'Download a video from Bilibili and forward it to cloud storage'
 inputs:
-  bili_video_url:  # id of input
+  bili_video_url:
     description: 'URL of the Bilibili video to download'
     required: true
     default: 'https://www.bilibili.com/bangumi/play/ep307247' # the real bilibili
+  bili_proxy: 
+    description: 'Proxy URL, used when fetching Bilibili webpages'
+    required: false
+    default: 'zj1.unblock.im:51201'
+  bili_cookie: 
+    description: 'Content of cookies.txt file for bilibili.com'
+    required: false
+    default: ''
 outputs:
   transfer_urls: # id of output
     description: 'A list of transfer service URLs'
@@ -14,3 +22,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.bili_video_url }}
+    - ${{ inputs.bili_proxy }}
+    - ${{ inputs.bili_cookie }}
