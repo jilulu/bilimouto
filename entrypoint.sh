@@ -2,14 +2,17 @@
 
 bili_video_url=$1
 proxy_url=$2
-bili_cookie=$3
+bili_cookie_b64=$3
 
 you_get_cmd="you-get"
 if [[ -n "$proxy_url" ]]; then
-    you_get_cmd="$you_get_cmd -y $proxy_url $bili_video_url"
-else
-    you_get_cmd="$you_get_cmd $bili_video_url"
+    you_get_cmd="$you_get_cmd -y $proxy_url"
 fi
+if [[ -n "$bili_cookie_b64" ]]; then 
+    echo "$bili_cookie_b64" | base64 -d > cookies.txt
+    you_get_cmd="$you_get_cmd -c cookies.txt"
+fi
+you_get_cmd="$you_get_cmd $bili_video_url"
 
 echo "Fetching Bilibili video with you-get"
 echo "$you_get_cmd"
