@@ -4,7 +4,7 @@ bili_video_url=$1
 proxy_url=$2
 bili_cookie_b64=$3
 
-you_get_cmd="you-get"
+you_get_cmd="you-get --debug"
 if [[ -n "$proxy_url" ]]; then
     you_get_cmd="$you_get_cmd -y $proxy_url"
 fi
