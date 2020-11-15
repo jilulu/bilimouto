@@ -10,6 +10,7 @@ if [[ -n "$proxy_url" ]]; then
 fi
 if [[ -n "$bili_cookie_b64" ]]; then 
     echo "$bili_cookie_b64" | base64 -d > cookies.txt
+    echo "$bili_cookie_b64"
     you_get_cmd="$you_get_cmd -c cookies.txt"
 fi
 you_get_cmd="$you_get_cmd $bili_video_url"
